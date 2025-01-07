@@ -1,134 +1,111 @@
-# README for Robot Movement Project (ROS 2)
+# README for Robot Navigation Package
 
 ## Overview
-This project consists of a complete ROS 2 package designed to control and monitor a robot's movement. The package integrates:
+This repository contains two branches, each implementing different robot navigation functionalities using ROS:
 
-1. **A Robot Movement Controller Node:** Allows the user to input velocities for the robot to move.
-2. **An Auxiliary Service Node:** Enables the retrieval of the most recent goal set by the user.
-
-This package demonstrates key concepts of ROS 2, including publishers, subscribers, and services, and can be used in both simulation and real-world robotic applications.
+1. **ROS 1 Branch:** Includes an action client and a service node to handle robot goals.
+2. **ROS 2 Branch:** Provides a node for robot navigation, allowing user-defined velocity commands in a simulation environment.
 
 ---
 
-## Node 1: Robot Movement Controller
+## Branch Descriptions
 
-### Functionality
-This node enables the user to manually control a robot's movement by specifying linear and angular velocities through terminal input. It publishes these velocity commands to the `/cmd_vel` topic, which is standard in ROS 2 for robot control.
+### ROS 1 Branch
+The ROS 1 implementation offers the following:
 
-### Key Features
-- Publishes velocity commands (`Twist` messages) to the `/cmd_vel` topic.
-- Restricts linear velocity to a configurable maximum threshold (`LINEAR_THR`).
-- Automatically stops the robot after 3 seconds of movement.
+#### **Action Client Node**
+- Enables the user to set or cancel target positions (x, y).
+- Utilizes feedback from the action server to track when the robot reaches its target.
+- Publishes the robot's state (position and velocity) as a custom message (`x`, `y`, `vel_x`, `vel_z`) based on the `/odom` topic.
 
-### Node Details
-- **Node Name:** `move_robot_node`
-- **Published Topic:** `/cmd_vel` (message type: `geometry_msgs/Twist`)
+#### **Service Node**
+- Provides the last set target position when called.
 
-### How to Use
-1. **Run the Node**
-   ```bash
-   ros2 run <your_package_name> move_robot.py
-   ```
+#### **Launch File**
+- Includes a complete simulation setup to run all nodes seamlessly.
 
-2. **Input Commands**
-   - Enter a linear velocity (`x`) value.
-   - Enter an angular velocity (`z`) value.
+### ROS 2 Branch
+The ROS 2 implementation focuses on:
 
-3. **Behavior**
-   - The robot moves for 3 seconds based on the provided inputs and then stops.
-   - Users can continue to input new commands.
+#### **Robot Movement Node**
+- Allows users to control the robot's motion by inputting linear and angular velocities via the terminal.
+- The robot moves for 3 seconds per input and stops automatically, awaiting further commands.
+- Publishes velocity commands to the `/cmd_vel` topic.
 
 ---
 
-## Node 2: Retrieve Latest Goal
-
-### Functionality
-This service node tracks the most recent goal set for the robot's movement and provides it to users upon request. The node subscribes to the `/reaching_goal/goal` topic and offers a ROS service, `/retrieve_latest_goal`, to return the last set goal.
-
-### Key Features
-- Subscribes to `/reaching_goal/goal` to monitor new goals.
-- Provides a ROS service (`/retrieve_latest_goal`) to retrieve the latest goal.
-- Handles cases where no goal has been set by logging warnings.
-
-### Node Details
-- **Node Name:** `latest_goal_retriever`
-- **Subscribed Topic:** `/reaching_goal/goal` (message type: `PlanningActionGoal`)
-- **Service Provided:** `/retrieve_latest_goal` (service type: `Target`)
-
-### How to Use
-1. **Run the Node**
-   ```bash
-   ros2 run <your_package_name> goal_service_node.py
-   ```
-
-2. **Call the Service**
-   Use the ROS 2 service tools to request the latest goal:
-   ```bash
-   ros2 service call /retrieve_latest_goal <your_package_name>/srv/Target
-   ```
-
-3. **Expected Behavior**
-   - If a goal has been set, the service returns the goal's `PoseStamped` data.
-   - If no goal has been set, a warning is logged, and an empty response is returned.
-
----
-
-## Installation and Compilation
-
-### Prerequisites
-- ROS 2 (e.g., Humble, Foxy, or Galactic) installed on your system.
-- A ROS 2 workspace set up (e.g., `~/ros2_ws`).
+## Getting Started
 
 ### Clone the Repository
-Navigate to the `src` directory of your ROS 2 workspace and clone the repository:
+Download the repository to your ROS workspace:
 
 ```bash
-cd ~/ros2_ws/src
-git clone https://github.com/<your-username>/robot_movement_project.git
+cd ~/ros_workspace/src
+git clone https://github.com/<your-username>/robot_navigation_package.git
 ```
 
-### Build the Package
-After cloning the repository, build the package using the following commands:
+### Switch to the Desired Branch
+To use the ROS 1 or ROS 2 implementation, checkout the respective branch:
 
-```bash
-cd ~/ros2_ws
-colcon build
-```
+- For ROS 1:
+  ```bash
+  git checkout ros1
+  ```
 
-### Source the Workspace
-Source the workspace to update your ROS 2 environment:
-
-```bash
-source install/setup.bash
-```
+- For ROS 2:
+  ```bash
+  git checkout ros2
+  ```
 
 ---
 
-## Example Workflow
-1. **Start the ROS 2 Core**
+## Installation and Setup
+
+### ROS 1
+1. **Build the Package:**
    ```bash
-   ros2 daemon start
+   cd ~/ros_workspace
+   catkin_make
+   source devel/setup.bash
    ```
 
-2. **Run the Movement Controller Node**
+2. **Run the Nodes:**
+   - Action Client:
+     ```bash
+     rosrun robot_navigation_package nodeA_client.py
+     ```
+   - Service Node:
+     ```bash
+     rosrun robot_navigation_package NodeB.py
+     ```
+
+3. **Launch Simulation:**
    ```bash
-   ros2 run <your_package_name> move_robot.py
+   roslaunch robot_navigation_package simulation.launch
    ```
 
-3. **Run the Goal Retrieval Node**
+### ROS 2
+1. **Build the Package:**
    ```bash
-   ros2 run <your_package_name> goal_service_node.py
+   cd ~/ros_workspace
+   colcon build
+   source install/setup.bash
    ```
 
-4. **Set a Goal and Retrieve It**
-   - Use the Movement Controller to set goals.
-   - Call the `/retrieve_latest_goal` service to fetch the latest goal set.
+2. **Run the Node:**
+   ```bash
+   ros2 run robot_navigation_package move_robot.py
+   ```
 
 ---
 
-## Additional Notes
-- Ensure your robot or simulation environment is set up to interpret commands from the `/cmd_vel` topic.
-- Use a simulation tool like Gazebo or RViz if no physical robot is available.
-- Modify parameters like `LINEAR_THR` in the code to suit your robot's capabilities.
+## Additional Information
+- Use `rostopic echo` or `ros2 topic echo` to monitor relevant topics (e.g., `/cmd_vel`, `/reaching_goal/goal`).
+- Both branches include README files with specific instructions for usage and testing.
+- The package is compatible with both simulated and real robot environments.
 
 ---
+
+## License
+This project is distributed under the MIT License. Refer to the LICENSE file for full details.
+
