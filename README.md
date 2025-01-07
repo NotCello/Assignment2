@@ -105,7 +105,3 @@ To use the ROS 1 or ROS 2 implementation, checkout the respective branch:
 - The package is compatible with both simulated and real robot environments.
 
 ---
-
-## License
-This project is distributed under the MIT License. Refer to the LICENSE file for full details.
-
