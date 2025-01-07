@@ -1,42 +1,39 @@
-#!/usr/bin/env python
+#! /usr/bin/env python 
 
 import rospy
+from assignment_2_2024.msg import PlanningActionGoal
 from assignment_2_2024.srv import Target, TargetResponse
-from geometry_msgs.msg import PoseStamped
 
-# Callback del servizio
-def service_callback(request):
-    rospy.loginfo("Service request received")
-    response = TargetResponse()
-    response.last_target = PoseStamped()
+latest_goal = None # Store the most recent goal
 
-    # Imposta i valori di risposta
-    response.last_target.header.stamp = rospy.Time.now()
-    response.last_target.header.frame_id = "map"
-    response.last_target.pose.position.x = 1.0  # Modifica con valori reali se necessario
-    response.last_target.pose.position.y = 2.0
-    response.last_target.pose.position.z = 0.0
-    response.last_target.pose.orientation.x = 0.0
-    response.last_target.pose.orientation.y = 0.0
-    response.last_target.pose.orientation.z = 0.0
-    response.last_target.pose.orientation.w = 1.0
+# Callback to save the most recent goal
+def save_goal_callback(message):
+    global latest_goal
+    latest_goal = message
+    rospy.loginfo(f"New goal received: {latest_goal.goal.target_pose}")
 
-    rospy.loginfo("Returning last target")
-    return response
+# Service handler to return the most recent goal
+def process_goal_request(request):
+    global latest_goal
+    if latest_goal is None:
+        rospy.logwarn("[SERVICE NODE] No goal has been set yet")
+        return TargetResponse()
+    goal_data = latest_goal.goal.target_pose
+    return TargetResponse(goal_data)
 
-# Funzione principale
-def main():
-    rospy.init_node('custom_service_server')
-
-    # Crea il server del servizio
-    service = rospy.Service('/custom_service', Target, service_callback)
-    rospy.loginfo("Service '/custom_service' is ready and awaiting requests.")
-
+# Initialize and run the service node
+def goal_service_node():
+    rospy.init_node('latest_goal_retriever')
+    # Subscriber to monitor new goals
+    rospy.Subscriber('/reaching_goal/goal', PlanningActionGoal, save_goal_callback)
+    # Service to provide the most recent goal
+    rospy.Service('/retrieve_latest_goal', Target, process_goal_request)
+    rospy.loginfo("Goal service node is now running and awaiting requests...")
     rospy.spin()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
-        main()
+        goal_service_node()
     except rospy.ROSInterruptException:
-        rospy.loginfo("Service server node interrupted")
+        print("Service node terminated")
 
