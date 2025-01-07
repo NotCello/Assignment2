@@ -57,7 +57,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   Robot_info.msg
+   RobotInfo.msg
 #   Message2.msg
  )
 
@@ -79,6 +79,7 @@ find_package(catkin REQUIRED COMPONENTS
    DEPENDENCIES
    actionlib_msgs
    geometry_msgs
+   std_msgs
 
  )
 
@@ -114,7 +115,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES assignment_2_2023
-#  CATKIN_DEPENDS actionlib actionlib_msgs geometry_msgs nav_msgs roscpp rospy sensor_msgs std_msgs std_srvs tf
+  CATKIN_DEPENDS actionlib actionlib_msgs geometry_msgs nav_msgs roscpp rospy sensor_msgs std_msgs std_srvs tf message_runtime
 #  DEPENDS system_lib
 )
 
