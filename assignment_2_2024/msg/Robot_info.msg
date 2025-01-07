@@ -1,4 +1,4 @@
 float64 x
 float64 y
-float64 vx
-float64 vz
+float64 vel_x
+float64 vel_z
