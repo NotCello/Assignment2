@@ -107,7 +107,3 @@ Enter angular velocity z: 0.5
 - Use a simulation tool like Gazebo or RViz to test the node if no physical robot is available.
 
 ---
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
