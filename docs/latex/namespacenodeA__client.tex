@@ -1,0 +1,108 @@
+\doxysection{node\+A\+\_\+client Namespace Reference}
+\hypertarget{namespacenodeA__client}{}\label{namespacenodeA__client}\index{nodeA\_client@{nodeA\_client}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacenodeA__client_aed47726cd34d105484bfccdb8decb493}{odometry\+\_\+callback}} (data)
+\begin{DoxyCompactList}\small\item\em Callback function for retrieving the robot state from /odom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacenodeA__client_af5f059929d3fb46e41902e39492c43ad}{feedback\+\_\+handler}} (feedback)
+\begin{DoxyCompactList}\small\item\em Handles feedback from the action server. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacenodeA__client_a918baaef2962a1aaa62edfd059816eb2}{dispatch\+\_\+goal}} (action\+\_\+client, x\+\_\+target, y\+\_\+target)
+\begin{DoxyCompactList}\small\item\em Sends a goal to the action server. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacenodeA__client_ae6cf3583eb193251b83f38a85331111e}{abort\+\_\+goal}} (action\+\_\+client)
+\begin{DoxyCompactList}\small\item\em Cancels an active goal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacenodeA__client_ade07977704b2743edc99dae53b352e6a}{retrieve\+\_\+coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves goal coordinates from user input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacenodeA__client_ae8e0219abf7df72265fa5e9667eba350}{main}} ()
+\begin{DoxyCompactList}\small\item\em The main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacenodeA__client_ae6cf3583eb193251b83f38a85331111e}\label{namespacenodeA__client_ae6cf3583eb193251b83f38a85331111e} 
+\index{nodeA\_client@{nodeA\_client}!abort\_goal@{abort\_goal}}
+\index{abort\_goal@{abort\_goal}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{abort\_goal()}{abort\_goal()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+abort\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{action\+\_\+client }\end{DoxyParamCaption})}
+
+
+
+Cancels an active goal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+client} & The action client instance\\
+\hline
+\end{DoxyParams}
+Attempts to cancel the active goal if one exists. \Hypertarget{namespacenodeA__client_a918baaef2962a1aaa62edfd059816eb2}\label{namespacenodeA__client_a918baaef2962a1aaa62edfd059816eb2} 
+\index{nodeA\_client@{nodeA\_client}!dispatch\_goal@{dispatch\_goal}}
+\index{dispatch\_goal@{dispatch\_goal}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{dispatch\_goal()}{dispatch\_goal()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+dispatch\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{action\+\_\+client,  }\item[{}]{x\+\_\+target,  }\item[{}]{y\+\_\+target }\end{DoxyParamCaption})}
+
+
+
+Sends a goal to the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+client} & The action client instance \\
+\hline
+{\em x\+\_\+target} & Target x coordinate \\
+\hline
+{\em y\+\_\+target} & Target y coordinate\\
+\hline
+\end{DoxyParams}
+Sends the goal to the /reaching\+\_\+goal action server. \Hypertarget{namespacenodeA__client_af5f059929d3fb46e41902e39492c43ad}\label{namespacenodeA__client_af5f059929d3fb46e41902e39492c43ad} 
+\index{nodeA\_client@{nodeA\_client}!feedback\_handler@{feedback\_handler}}
+\index{feedback\_handler@{feedback\_handler}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{feedback\_handler()}{feedback\_handler()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+feedback\+\_\+handler (\begin{DoxyParamCaption}\item[{}]{feedback }\end{DoxyParamCaption})}
+
+
+
+Handles feedback from the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feedback} & The feedback message from the action server\\
+\hline
+\end{DoxyParams}
+Logs a message when the robot reaches the target position. \Hypertarget{namespacenodeA__client_ae8e0219abf7df72265fa5e9667eba350}\label{namespacenodeA__client_ae8e0219abf7df72265fa5e9667eba350} 
+\index{nodeA\_client@{nodeA\_client}!main@{main}}
+\index{main@{main}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The main function. 
+
+Initializes ROS, sets up the action client, and handles user commands. \Hypertarget{namespacenodeA__client_aed47726cd34d105484bfccdb8decb493}\label{namespacenodeA__client_aed47726cd34d105484bfccdb8decb493} 
+\index{nodeA\_client@{nodeA\_client}!odometry\_callback@{odometry\_callback}}
+\index{odometry\_callback@{odometry\_callback}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{odometry\_callback()}{odometry\_callback()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+odometry\+\_\+callback (\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+Callback function for retrieving the robot state from /odom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The Odometry message containing the robot\textquotesingle{}s current state\\
+\hline
+\end{DoxyParams}
+Publishes the robot\textquotesingle{}s coordinates and speed to the /robot\+\_\+status topic. \Hypertarget{namespacenodeA__client_ade07977704b2743edc99dae53b352e6a}\label{namespacenodeA__client_ade07977704b2743edc99dae53b352e6a} 
+\index{nodeA\_client@{nodeA\_client}!retrieve\_coordinates@{retrieve\_coordinates}}
+\index{retrieve\_coordinates@{retrieve\_coordinates}!nodeA\_client@{nodeA\_client}}
+\doxysubsubsection{\texorpdfstring{retrieve\_coordinates()}{retrieve\_coordinates()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+retrieve\+\_\+coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves goal coordinates from user input. 
+
+\begin{DoxyReturn}{Returns}
+Tuple (x\+\_\+val, y\+\_\+val) containing the x and y coordinates
+\end{DoxyReturn}
+Ensures that only valid numerical inputs are accepted. 

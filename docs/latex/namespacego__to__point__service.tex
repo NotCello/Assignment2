@@ -1,0 +1,214 @@
+\doxysection{go\+\_\+to\+\_\+point\+\_\+service Namespace Reference}
+\hypertarget{namespacego__to__point__service}{}\label{namespacego__to__point__service}\index{go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a9fdc5eb9c63de4643c5f00ab97660eaa}{go\+\_\+to\+\_\+point\+\_\+switch}} (req)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a17d48d6f256c35e262d9b25721a10df9}{clbk\+\_\+odom}} (msg)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a7182d17d2d7b32730048828ed3d961ee}{change\+\_\+state}} (state)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_ad7d16447a70a24d06f75b83ece0b0c91}{normalize\+\_\+angle}} (angle)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_aae4c0044fb58c7d169227ed14c9b32bb}{fix\+\_\+yaw}} (des\+\_\+pos)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a2f5a72a1cb1903aab6d840f5840446c0}{go\+\_\+straight\+\_\+ahead}} (des\+\_\+pos)
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_aa2fed8ff6da7c933a4d8b044a2d5ce29}{done}} ()
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a9cfb7f04495639a57662ff1ad9453a8f}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacego__to__point__service_abe657bd9603dc3f58a1956668813514e}{active\+\_\+}} = False
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a7687850055557a27f335be20e994c023}{position\+\_\+}} = Point()
+\item 
+int \mbox{\hyperlink{namespacego__to__point__service_ac0d754b5218554bf0aa6507e08262aa4}{yaw\+\_\+}} = 0
+\item 
+int \mbox{\hyperlink{namespacego__to__point__service_a7302709bb82adca46efc76daaa821aa7}{state\+\_\+}} = 0
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a17e47e580dbbf300a91d42e81bb91856}{desired\+\_\+position\+\_\+}} = Point()
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a2e836af955467ad8d94a57e154023d75}{x}}
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_af174820ca4271dd1a4a3db2cb16c5582}{y}}
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_a1e0590d4e8fc1de7369864255776b1ac}{z}}
+\item 
+int \mbox{\hyperlink{namespacego__to__point__service_a2464d5355e9bb593fa3ab79354a574f1}{yaw\+\_\+precision\+\_\+}} = math.\+pi / 9
+\item 
+int \mbox{\hyperlink{namespacego__to__point__service_a53e290ebfa498679a2421356d35ccd0e}{yaw\+\_\+precision\+\_\+2\+\_\+}} = math.\+pi / 90
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_af5f23f6949a7c8902af969b86d59f0ff}{dist\+\_\+precision\+\_\+}} = 0.\+3
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_aa4dcb2c51349c6a486168f6bc2cdb094}{kp\+\_\+a}} = 3.\+0
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_a1dbf3b8830618a71226b15c005c0b5e5}{kp\+\_\+d}} = 0.\+2
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_ae65f765636456df7afcf93a22b51038e}{ub\+\_\+a}} = 0.\+6
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_a54d632450f4291a2ff664550f68af893}{lb\+\_\+a}} = -\/0.\+5
+\item 
+float \mbox{\hyperlink{namespacego__to__point__service_a6f1913e3ce0b294a3cc1a519079137b9}{ub\+\_\+d}} = 0.\+6
+\item 
+\mbox{\hyperlink{namespacego__to__point__service_ae04aed6a94addf0dd452dfe17235b8fc}{pub}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacego__to__point__service_a7182d17d2d7b32730048828ed3d961ee}\label{namespacego__to__point__service_a7182d17d2d7b32730048828ed3d961ee} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!change\_state@{change\_state}}
+\index{change\_state@{change\_state}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{change\_state()}{change\_state()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+change\+\_\+state (\begin{DoxyParamCaption}\item[{}]{state }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_a17d48d6f256c35e262d9b25721a10df9}\label{namespacego__to__point__service_a17d48d6f256c35e262d9b25721a10df9} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!clbk\_odom@{clbk\_odom}}
+\index{clbk\_odom@{clbk\_odom}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{clbk\_odom()}{clbk\_odom()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+clbk\+\_\+odom (\begin{DoxyParamCaption}\item[{}]{msg }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_aa2fed8ff6da7c933a4d8b044a2d5ce29}\label{namespacego__to__point__service_aa2fed8ff6da7c933a4d8b044a2d5ce29} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!done@{done}}
+\index{done@{done}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{done()}{done()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_aae4c0044fb58c7d169227ed14c9b32bb}\label{namespacego__to__point__service_aae4c0044fb58c7d169227ed14c9b32bb} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!fix\_yaw@{fix\_yaw}}
+\index{fix\_yaw@{fix\_yaw}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{fix\_yaw()}{fix\_yaw()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+fix\+\_\+yaw (\begin{DoxyParamCaption}\item[{}]{des\+\_\+pos }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_a2f5a72a1cb1903aab6d840f5840446c0}\label{namespacego__to__point__service_a2f5a72a1cb1903aab6d840f5840446c0} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!go\_straight\_ahead@{go\_straight\_ahead}}
+\index{go\_straight\_ahead@{go\_straight\_ahead}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{go\_straight\_ahead()}{go\_straight\_ahead()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+go\+\_\+straight\+\_\+ahead (\begin{DoxyParamCaption}\item[{}]{des\+\_\+pos }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_a9fdc5eb9c63de4643c5f00ab97660eaa}\label{namespacego__to__point__service_a9fdc5eb9c63de4643c5f00ab97660eaa} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!go\_to\_point\_switch@{go\_to\_point\_switch}}
+\index{go\_to\_point\_switch@{go\_to\_point\_switch}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{go\_to\_point\_switch()}{go\_to\_point\_switch()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+go\+\_\+to\+\_\+point\+\_\+switch (\begin{DoxyParamCaption}\item[{}]{req }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_a9cfb7f04495639a57662ff1ad9453a8f}\label{namespacego__to__point__service_a9cfb7f04495639a57662ff1ad9453a8f} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!main@{main}}
+\index{main@{main}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacego__to__point__service_ad7d16447a70a24d06f75b83ece0b0c91}\label{namespacego__to__point__service_ad7d16447a70a24d06f75b83ece0b0c91} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!normalize\_angle@{normalize\_angle}}
+\index{normalize\_angle@{normalize\_angle}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{normalize\_angle()}{normalize\_angle()}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+normalize\+\_\+angle (\begin{DoxyParamCaption}\item[{}]{angle }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacego__to__point__service_abe657bd9603dc3f58a1956668813514e}\label{namespacego__to__point__service_abe657bd9603dc3f58a1956668813514e} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!active\_@{active\_}}
+\index{active\_@{active\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{active\_}{active\_}}
+{\footnotesize\ttfamily bool go\+\_\+to\+\_\+point\+\_\+service.\+active\+\_\+ = False}
+
+\Hypertarget{namespacego__to__point__service_a17e47e580dbbf300a91d42e81bb91856}\label{namespacego__to__point__service_a17e47e580dbbf300a91d42e81bb91856} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!desired\_position\_@{desired\_position\_}}
+\index{desired\_position\_@{desired\_position\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{desired\_position\_}{desired\_position\_}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+desired\+\_\+position\+\_\+ = Point()}
+
+\Hypertarget{namespacego__to__point__service_af5f23f6949a7c8902af969b86d59f0ff}\label{namespacego__to__point__service_af5f23f6949a7c8902af969b86d59f0ff} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!dist\_precision\_@{dist\_precision\_}}
+\index{dist\_precision\_@{dist\_precision\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{dist\_precision\_}{dist\_precision\_}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+dist\+\_\+precision\+\_\+ = 0.\+3}
+
+\Hypertarget{namespacego__to__point__service_aa4dcb2c51349c6a486168f6bc2cdb094}\label{namespacego__to__point__service_aa4dcb2c51349c6a486168f6bc2cdb094} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!kp\_a@{kp\_a}}
+\index{kp\_a@{kp\_a}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{kp\_a}{kp\_a}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+kp\+\_\+a = 3.\+0}
+
+\Hypertarget{namespacego__to__point__service_a1dbf3b8830618a71226b15c005c0b5e5}\label{namespacego__to__point__service_a1dbf3b8830618a71226b15c005c0b5e5} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!kp\_d@{kp\_d}}
+\index{kp\_d@{kp\_d}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{kp\_d}{kp\_d}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+kp\+\_\+d = 0.\+2}
+
+\Hypertarget{namespacego__to__point__service_a54d632450f4291a2ff664550f68af893}\label{namespacego__to__point__service_a54d632450f4291a2ff664550f68af893} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!lb\_a@{lb\_a}}
+\index{lb\_a@{lb\_a}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{lb\_a}{lb\_a}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+lb\+\_\+a = -\/0.\+5}
+
+\Hypertarget{namespacego__to__point__service_a7687850055557a27f335be20e994c023}\label{namespacego__to__point__service_a7687850055557a27f335be20e994c023} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!position\_@{position\_}}
+\index{position\_@{position\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{position\_}{position\_}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+position\+\_\+ = Point()}
+
+\Hypertarget{namespacego__to__point__service_ae04aed6a94addf0dd452dfe17235b8fc}\label{namespacego__to__point__service_ae04aed6a94addf0dd452dfe17235b8fc} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!pub@{pub}}
+\index{pub@{pub}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{pub}{pub}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+pub = None}
+
+\Hypertarget{namespacego__to__point__service_a7302709bb82adca46efc76daaa821aa7}\label{namespacego__to__point__service_a7302709bb82adca46efc76daaa821aa7} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!state\_@{state\_}}
+\index{state\_@{state\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{state\_}{state\_}}
+{\footnotesize\ttfamily int go\+\_\+to\+\_\+point\+\_\+service.\+state\+\_\+ = 0}
+
+\Hypertarget{namespacego__to__point__service_ae65f765636456df7afcf93a22b51038e}\label{namespacego__to__point__service_ae65f765636456df7afcf93a22b51038e} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!ub\_a@{ub\_a}}
+\index{ub\_a@{ub\_a}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{ub\_a}{ub\_a}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+ub\+\_\+a = 0.\+6}
+
+\Hypertarget{namespacego__to__point__service_a6f1913e3ce0b294a3cc1a519079137b9}\label{namespacego__to__point__service_a6f1913e3ce0b294a3cc1a519079137b9} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!ub\_d@{ub\_d}}
+\index{ub\_d@{ub\_d}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{ub\_d}{ub\_d}}
+{\footnotesize\ttfamily float go\+\_\+to\+\_\+point\+\_\+service.\+ub\+\_\+d = 0.\+6}
+
+\Hypertarget{namespacego__to__point__service_a2e836af955467ad8d94a57e154023d75}\label{namespacego__to__point__service_a2e836af955467ad8d94a57e154023d75} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!x@{x}}
+\index{x@{x}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+x}
+
+\Hypertarget{namespacego__to__point__service_af174820ca4271dd1a4a3db2cb16c5582}\label{namespacego__to__point__service_af174820ca4271dd1a4a3db2cb16c5582} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!y@{y}}
+\index{y@{y}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+y}
+
+\Hypertarget{namespacego__to__point__service_ac0d754b5218554bf0aa6507e08262aa4}\label{namespacego__to__point__service_ac0d754b5218554bf0aa6507e08262aa4} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!yaw\_@{yaw\_}}
+\index{yaw\_@{yaw\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{yaw\_}{yaw\_}}
+{\footnotesize\ttfamily int go\+\_\+to\+\_\+point\+\_\+service.\+yaw\+\_\+ = 0}
+
+\Hypertarget{namespacego__to__point__service_a2464d5355e9bb593fa3ab79354a574f1}\label{namespacego__to__point__service_a2464d5355e9bb593fa3ab79354a574f1} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!yaw\_precision\_@{yaw\_precision\_}}
+\index{yaw\_precision\_@{yaw\_precision\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{yaw\_precision\_}{yaw\_precision\_}}
+{\footnotesize\ttfamily int go\+\_\+to\+\_\+point\+\_\+service.\+yaw\+\_\+precision\+\_\+ = math.\+pi / 9}
+
+\Hypertarget{namespacego__to__point__service_a53e290ebfa498679a2421356d35ccd0e}\label{namespacego__to__point__service_a53e290ebfa498679a2421356d35ccd0e} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!yaw\_precision\_2\_@{yaw\_precision\_2\_}}
+\index{yaw\_precision\_2\_@{yaw\_precision\_2\_}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{yaw\_precision\_2\_}{yaw\_precision\_2\_}}
+{\footnotesize\ttfamily int go\+\_\+to\+\_\+point\+\_\+service.\+yaw\+\_\+precision\+\_\+2\+\_\+ = math.\+pi / 90}
+
+\Hypertarget{namespacego__to__point__service_a1e0590d4e8fc1de7369864255776b1ac}\label{namespacego__to__point__service_a1e0590d4e8fc1de7369864255776b1ac} 
+\index{go\_to\_point\_service@{go\_to\_point\_service}!z@{z}}
+\index{z@{z}!go\_to\_point\_service@{go\_to\_point\_service}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily go\+\_\+to\+\_\+point\+\_\+service.\+z}
+

@@ -1,0 +1,147 @@
+\doxysection{scripts/node\+A\+\_\+client.py File Reference}
+\hypertarget{nodeA__client_8py}{}\label{nodeA__client_8py}\index{scripts/nodeA\_client.py@{scripts/nodeA\_client.py}}
+
+
+A ROS action client for sending movement goals to the robot.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nodeA__client_8py_aed47726cd34d105484bfccdb8decb493}{node\+A\+\_\+client.\+odometry\+\_\+callback}} (data)
+\begin{DoxyCompactList}\small\item\em Callback function that processes odometry data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nodeA__client_8py_af5f059929d3fb46e41902e39492c43ad}{node\+A\+\_\+client.\+feedback\+\_\+handler}} (feedback)
+\begin{DoxyCompactList}\small\item\em Handles feedback from the action server. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nodeA__client_8py_a918baaef2962a1aaa62edfd059816eb2}{node\+A\+\_\+client.\+dispatch\+\_\+goal}} (action\+\_\+client, x\+\_\+target, y\+\_\+target)
+\begin{DoxyCompactList}\small\item\em Sends a movement goal to the action server. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nodeA__client_8py_ae6cf3583eb193251b83f38a85331111e}{node\+A\+\_\+client.\+abort\+\_\+goal}} (action\+\_\+client)
+\begin{DoxyCompactList}\small\item\em Attempts to cancel an active movement goal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nodeA__client_8py_ade07977704b2743edc99dae53b352e6a}{node\+A\+\_\+client.\+retrieve\+\_\+coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves target coordinates from user input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nodeA__client_8py_ae8e0219abf7df72265fa5e9667eba350}{node\+A\+\_\+client.\+main}} ()
+\begin{DoxyCompactList}\small\item\em The main function of the action client script. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A ROS action client for sending movement goals to the robot. 
+
+\begin{DoxyAuthor}{Author}
+Marcello Ori 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12/03/2025
+\end{DoxyDate}
+This script implements a ROS action client that allows users to set movement goals for the robot. It continuously retrieves the robot\textquotesingle{}s current state from the {\ttfamily /odom} topic and publishes updates to the {\ttfamily /robot\+\_\+status} topic. The user can\+:
+\begin{DoxyItemize}
+\item Set a movement goal through input
+\item Cancel an active goal if needed
+\item Exit the program gracefully
+\end{DoxyItemize}
+
+{\bfseries{Publisher\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily /robot\+\_\+status}
+\end{DoxyItemize}
+
+{\bfseries{Subscriber\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily /odom}
+\end{DoxyItemize}
+
+{\bfseries{Action Client\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily /reaching\+\_\+goal} 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{nodeA__client_8py_ae6cf3583eb193251b83f38a85331111e}\label{nodeA__client_8py_ae6cf3583eb193251b83f38a85331111e} 
+\index{nodeA\_client.py@{nodeA\_client.py}!abort\_goal@{abort\_goal}}
+\index{abort\_goal@{abort\_goal}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{abort\_goal()}{abort\_goal()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+abort\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{action\+\_\+client }\end{DoxyParamCaption})}
+
+
+
+Attempts to cancel an active movement goal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+client} & The instance of the action client involved in the goal.\\
+\hline
+\end{DoxyParams}
+Cancels the active goal if it exists and logs the result of the operation. \Hypertarget{nodeA__client_8py_a918baaef2962a1aaa62edfd059816eb2}\label{nodeA__client_8py_a918baaef2962a1aaa62edfd059816eb2} 
+\index{nodeA\_client.py@{nodeA\_client.py}!dispatch\_goal@{dispatch\_goal}}
+\index{dispatch\_goal@{dispatch\_goal}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{dispatch\_goal()}{dispatch\_goal()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+dispatch\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{action\+\_\+client,  }\item[{}]{x\+\_\+target,  }\item[{}]{y\+\_\+target }\end{DoxyParamCaption})}
+
+
+
+Sends a movement goal to the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+client} & The instance of the action client used for communication. \\
+\hline
+{\em x\+\_\+target} & Target x coordinate for movement. \\
+\hline
+{\em y\+\_\+target} & Target y coordinate for movement.\\
+\hline
+\end{DoxyParams}
+Constructs and sends the goal to the {\ttfamily /reaching\+\_\+goal} action server. The goal\textquotesingle{}s orientation is set to default values. \Hypertarget{nodeA__client_8py_af5f059929d3fb46e41902e39492c43ad}\label{nodeA__client_8py_af5f059929d3fb46e41902e39492c43ad} 
+\index{nodeA\_client.py@{nodeA\_client.py}!feedback\_handler@{feedback\_handler}}
+\index{feedback\_handler@{feedback\_handler}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{feedback\_handler()}{feedback\_handler()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+feedback\+\_\+handler (\begin{DoxyParamCaption}\item[{}]{feedback }\end{DoxyParamCaption})}
+
+
+
+Handles feedback from the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feedback} & The feedback message from the action server.\\
+\hline
+\end{DoxyParams}
+This function logs a message when the robot successfully reaches the target position. \Hypertarget{nodeA__client_8py_ae8e0219abf7df72265fa5e9667eba350}\label{nodeA__client_8py_ae8e0219abf7df72265fa5e9667eba350} 
+\index{nodeA\_client.py@{nodeA\_client.py}!main@{main}}
+\index{main@{main}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The main function of the action client script. 
+
+Initializes the ROS node, sets up the action client, and manages user commands to control the robot\textquotesingle{}s movements. \Hypertarget{nodeA__client_8py_aed47726cd34d105484bfccdb8decb493}\label{nodeA__client_8py_aed47726cd34d105484bfccdb8decb493} 
+\index{nodeA\_client.py@{nodeA\_client.py}!odometry\_callback@{odometry\_callback}}
+\index{odometry\_callback@{odometry\_callback}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{odometry\_callback()}{odometry\_callback()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+odometry\+\_\+callback (\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+Callback function that processes odometry data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The Odometry message containing the robot\textquotesingle{}s current state.\\
+\hline
+\end{DoxyParams}
+This function retrieves the robot\textquotesingle{}s position and speed from the odometry data and publishes this information to the {\ttfamily /robot\+\_\+status} topic. \Hypertarget{nodeA__client_8py_ade07977704b2743edc99dae53b352e6a}\label{nodeA__client_8py_ade07977704b2743edc99dae53b352e6a} 
+\index{nodeA\_client.py@{nodeA\_client.py}!retrieve\_coordinates@{retrieve\_coordinates}}
+\index{retrieve\_coordinates@{retrieve\_coordinates}!nodeA\_client.py@{nodeA\_client.py}}
+\doxysubsubsection{\texorpdfstring{retrieve\_coordinates()}{retrieve\_coordinates()}}
+{\footnotesize\ttfamily node\+A\+\_\+client.\+retrieve\+\_\+coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves target coordinates from user input. 
+
+\begin{DoxyReturn}{Returns}
+Tuple (x\+\_\+val, y\+\_\+val) containing the target x and y coordinates.
+\end{DoxyReturn}
+Ensures that only valid numerical inputs are accepted. 

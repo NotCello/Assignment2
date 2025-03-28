@@ -1,0 +1,119 @@
+\chapter{Assignment 2 (Part II) -\/ Robot Navigation with ROS 2}
+\hypertarget{md_assignment2__rt-ros2_2README}{}\label{md_assignment2__rt-ros2_2README}\index{Assignment 2 (Part II) -\/ Robot Navigation with ROS 2@{Assignment 2 (Part II) -\/ Robot Navigation with ROS 2}}
+\label{md_assignment2__rt-ros2_2README_autotoc_md0}%
+\Hypertarget{md_assignment2__rt-ros2_2README_autotoc_md0}%
+ \hypertarget{md_assignment2__rt-ros2_2README_autotoc_md1}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md_assignment2__rt-ros2_2README_autotoc_md1}
+This project involves creating a ROS 2 package named {\ttfamily assignment2\+\_\+rt} that enables controlling a robot in a simulation environment. The functionality allows users to set linear and angular velocities, moving the robot for 3 seconds per command until the program is terminated.\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md2}{}\doxysubsection{\texorpdfstring{Node Functionality}{Node Functionality}}\label{md_assignment2__rt-ros2_2README_autotoc_md2}
+The program consists of a single node that interacts with the user through the terminal to control the robot\textquotesingle{}s motion\+:
+\begin{DoxyItemize}
+\item {\bfseries{User Input}}\+: At each step, the user is prompted to provide\+:
+\begin{DoxyItemize}
+\item Linear velocity ({\ttfamily x})
+\item Angular velocity ({\ttfamily z})
+\end{DoxyItemize}
+\item {\bfseries{Robot Motion}}\+: The robot moves with the specified velocities for 3 seconds.
+\item {\bfseries{Termination}}\+: The program runs continuously until the user interrupts it.
+\end{DoxyItemize}
+
+The robot starts in the simulation environment at position {\ttfamily (2,2)}.\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md3}{}\doxysection{\texorpdfstring{Nodes Description}{Nodes Description}}\label{md_assignment2__rt-ros2_2README_autotoc_md3}
+\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Movement Node}{Movement Node}}\label{md_assignment2__rt-ros2_2README_autotoc_md4}
+This single node interacts with the user and commands the robot\+:
+\begin{DoxyItemize}
+\item {\bfseries{User Commands}}\+:
+\begin{DoxyItemize}
+\item Enter the desired linear velocity ({\ttfamily x}) and angular velocity ({\ttfamily z}).
+\end{DoxyItemize}
+\item {\bfseries{Robot Behavior}}\+:
+\begin{DoxyItemize}
+\item Upon receiving input, the robot moves in the simulation environment with the given velocities for 3 seconds.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+This node uses ROS 2 publisher to control the robot’s movement, publishing velocity data on the {\ttfamily /cmd\+\_\+vel} topic.\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md5}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md_assignment2__rt-ros2_2README_autotoc_md5}
+\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md6}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_assignment2__rt-ros2_2README_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\bfseries{ROS 2}} must be installed on your system
+\item A properly configured ROS 2 workspace
+\item Clone the package {\ttfamily robot\+\_\+urdf} at the following link\+: \href{https://github.com/CarmineD8/robot_urdf}{\texttt{ robot\+\_\+urdf}}
+\item Run this command\+: {\ttfamily sudo apt-\/get install ros-\/\+ROS2\+DISTRO-\/xacro ros-\/\+ROS2\+DISTRO-\/joint-\/state-\/publisher ros-\/\+ROS2\+DISTRO-\/gazebo\texorpdfstring{$\ast$}{*}}
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md7}{}\doxysubsection{\texorpdfstring{1. Clone the Package}{1. Clone the Package}}\label{md_assignment2__rt-ros2_2README_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Open a terminal
+\item Navigate to the {\ttfamily src} folder of your ROS 2 workspace\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ \string~/ros2\_ws/src}
+
+\end{DoxyCode}
+
+\item Clone the repository for the package\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/AlessandroMangili/assignment2\_rt}
+
+\end{DoxyCode}
+
+\item Switch to the ROS 2 branch\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ assignment2\_rt}
+\DoxyCodeLine{git\ switch\ ros2}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md8}{}\doxysubsection{\texorpdfstring{2. Build the Package}{2. Build the Package}}\label{md_assignment2__rt-ros2_2README_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Navigate back to the root of your ROS 2 workspace\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ \string~/ros2\_ws}
+
+\end{DoxyCode}
+
+\item Build the package\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{colcon\ build}
+
+\end{DoxyCode}
+
+\item Verify the build process completes successfully.
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md9}{}\doxysubsection{\texorpdfstring{3. Source the Environment}{3. Source the Environment}}\label{md_assignment2__rt-ros2_2README_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Update your ROS 2 environment variables to include the new package. Add the following line to your {\ttfamily \texorpdfstring{$\sim$}{\string~}/.bashrc} file\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{echo\ "{}source\ \string~/ros2\_ws/install/setup.bash"{}\ >>\ \string~/.bashrc}
+
+\end{DoxyCode}
+ To apply the changes, run\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source\ \string~/.bashrc}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md10}{}\doxysection{\texorpdfstring{Run the Package}{Run the Package}}\label{md_assignment2__rt-ros2_2README_autotoc_md10}
+\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md11}{}\doxysubsection{\texorpdfstring{1. Launch the Simulation}{1. Launch the Simulation}}\label{md_assignment2__rt-ros2_2README_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Open a terminal and launch the simulation robot environment 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ launch\ robot\_urdf\ gazebo.launch.py}
+
+\end{DoxyCode}
+ where {\ttfamily robot\+\_\+urdf} is the package cloned before.
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md12}{}\doxysubsection{\texorpdfstring{2. Run the Movement Node}{2. Run the Movement Node}}\label{md_assignment2__rt-ros2_2README_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Run the node to control the robot\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ros2\ run\ assignment2\_rt\ motion}
+
+\end{DoxyCode}
+
+\item Follow the on-\/screen prompts to input the robot’s linear ({\ttfamily x}) and angular ({\ttfamily z}) velocities.
+\end{DoxyItemize}\hypertarget{md_assignment2__rt-ros2_2README_autotoc_md13}{}\doxysection{\texorpdfstring{Interacting with the Node}{Interacting with the Node}}\label{md_assignment2__rt-ros2_2README_autotoc_md13}
+
+\begin{DoxyItemize}
+\item {\bfseries{Enter Velocities}}\+: Each time the node prompts, input the linear ({\ttfamily x}) and angular ({\ttfamily z}) velocities.
+\item {\bfseries{Movement Execution}}\+: The robot will execute the motion for 3 seconds.
+\item {\bfseries{Continue or Exit}}\+: Continue providing new velocities until you decide to terminate the program. 
+\end{DoxyItemize}

@@ -1,0 +1,105 @@
+\doxysection{scripts/\+NodeB.py File Reference}
+\hypertarget{NodeB_8py}{}\label{NodeB_8py}\index{scripts/NodeB.py@{scripts/NodeB.py}}
+
+
+A ROS service node for retrieving the latest goal set for the robot.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{NodeB_8py_ae727377a1acb36328419e17de0715767}{Node\+B.\+save\+\_\+goal\+\_\+callback}} (message)
+\begin{DoxyCompactList}\small\item\em Callback function to save the most recent goal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{NodeB_8py_a749a8009d0d758b3d287f82d657313c6}{Node\+B.\+process\+\_\+goal\+\_\+request}} (request)
+\begin{DoxyCompactList}\small\item\em Service handler to return the most recent goal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{NodeB_8py_a32d421fab1ba2057c2e470c0f1698709}{Node\+B.\+goal\+\_\+service\+\_\+node}} ()
+\begin{DoxyCompactList}\small\item\em Initializes and runs the goal service node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{NodeB_8py_a64adeef0d8c3b659f45b48f751481b8a}{Node\+B.\+latest\+\_\+goal}} = None
+\begin{DoxyCompactList}\small\item\em Stores the most recent goal received. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A ROS service node for retrieving the latest goal set for the robot. 
+
+\begin{DoxyAuthor}{Author}
+Marcello Ori 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12/03/2025
+\end{DoxyDate}
+This service node keeps track of the most recent goal sent to the robot. It subscribes to the /reaching\+\_\+goal/goal topic to store the latest goal, and provides a service at /retrieve\+\_\+latest\+\_\+goal to return the last goal set.
+
+{\bfseries{Subscriber\+:}}
+\begin{DoxyItemize}
+\item /reaching\+\_\+goal/goal
+\end{DoxyItemize}
+
+{\bfseries{Service\+:}}
+\begin{DoxyItemize}
+\item /retrieve\+\_\+latest\+\_\+goal 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{NodeB_8py_a32d421fab1ba2057c2e470c0f1698709}\label{NodeB_8py_a32d421fab1ba2057c2e470c0f1698709} 
+\index{NodeB.py@{NodeB.py}!goal\_service\_node@{goal\_service\_node}}
+\index{goal\_service\_node@{goal\_service\_node}!NodeB.py@{NodeB.py}}
+\doxysubsubsection{\texorpdfstring{goal\_service\_node()}{goal\_service\_node()}}
+{\footnotesize\ttfamily Node\+B.\+goal\+\_\+service\+\_\+node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes and runs the goal service node. 
+
+Sets up the ROS subscriber and service, and starts listening for incoming requests. \Hypertarget{NodeB_8py_a749a8009d0d758b3d287f82d657313c6}\label{NodeB_8py_a749a8009d0d758b3d287f82d657313c6} 
+\index{NodeB.py@{NodeB.py}!process\_goal\_request@{process\_goal\_request}}
+\index{process\_goal\_request@{process\_goal\_request}!NodeB.py@{NodeB.py}}
+\doxysubsubsection{\texorpdfstring{process\_goal\_request()}{process\_goal\_request()}}
+{\footnotesize\ttfamily Node\+B.\+process\+\_\+goal\+\_\+request (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+Service handler to return the most recent goal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The incoming service request (unused in this case) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Target\+Response containing the latest goal\textquotesingle{}s target pose
+\end{DoxyReturn}
+If no goal has been set yet, logs a warning and returns an empty response. \Hypertarget{NodeB_8py_ae727377a1acb36328419e17de0715767}\label{NodeB_8py_ae727377a1acb36328419e17de0715767} 
+\index{NodeB.py@{NodeB.py}!save\_goal\_callback@{save\_goal\_callback}}
+\index{save\_goal\_callback@{save\_goal\_callback}!NodeB.py@{NodeB.py}}
+\doxysubsubsection{\texorpdfstring{save\_goal\_callback()}{save\_goal\_callback()}}
+{\footnotesize\ttfamily Node\+B.\+save\+\_\+goal\+\_\+callback (\begin{DoxyParamCaption}\item[{}]{message }\end{DoxyParamCaption})}
+
+
+
+Callback function to save the most recent goal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The Planning\+Action\+Goal message received from the /reaching\+\_\+goal/goal topic\\
+\hline
+\end{DoxyParams}
+Logs the new goal received and updates the global latest\+\_\+goal variable. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{NodeB_8py_a64adeef0d8c3b659f45b48f751481b8a}\label{NodeB_8py_a64adeef0d8c3b659f45b48f751481b8a} 
+\index{NodeB.py@{NodeB.py}!latest\_goal@{latest\_goal}}
+\index{latest\_goal@{latest\_goal}!NodeB.py@{NodeB.py}}
+\doxysubsubsection{\texorpdfstring{latest\_goal}{latest\_goal}}
+{\footnotesize\ttfamily Node\+B.\+latest\+\_\+goal = None}
+
+
+
+Stores the most recent goal received. 
+
+This global variable keeps track of the latest goal set for the robot. 
