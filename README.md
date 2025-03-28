@@ -5,7 +5,7 @@ This repository contains two branches, each implementing different robot navigat
 
 1. **ROS 1 Branch:** Includes an action client and a service node to handle robot goals.
 2. **ROS 2 Branch:** Provides a node for robot navigation, allowing user-defined velocity commands in a simulation environment.
-https://notcello.github.io/Assignment2/
+3. **docs Branch:** https://notcello.github.io/Assignment2/ this is the link for the documentation
 ---
 
 ## Branch Descriptions
